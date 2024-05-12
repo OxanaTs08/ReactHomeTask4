@@ -1,5 +1,6 @@
 import Answer from "./Answer";
 import { useState } from "react";
+import styles from '../../styles/Quiz.module.css'
 
 function MathQuiz() {
     
@@ -9,12 +10,9 @@ function MathQuiz() {
     const [wrongResult, setwrongResult] = useState("");
     const [image, setImage] = useState(null);
 
-    
-
     function generateQuiz() { 
         setNum1(Math.floor(Math.random() * 10));
         setNum2(Math.floor(Math.random() * 10));
-        
     }
 
     function updateScore(isCorrect) {
@@ -28,16 +26,14 @@ function MathQuiz() {
             setwrongResult('Wrong Answer. Try again')
             setImage(null)
         }
-        
-
     }
    
     return(
-        <div className="formCities">
+        <div className={styles.formCities}>
             <h2>Your Score: {score}</h2>
             <Answer generateQuiz={generateQuiz} num1={num1} num2={num2} updateScore={updateScore}/>
             {wrongResult}
-            {image &&<img className="cardImage" src={image} alt="" />}
+            {image &&<img className={styles.cardImage} src={image} alt="" />}
         </div>
     )
 }

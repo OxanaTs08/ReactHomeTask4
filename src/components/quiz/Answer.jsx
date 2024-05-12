@@ -1,10 +1,10 @@
 import { useState } from "react";
+import styles from '../../styles/Quiz.module.css'
 
 function Answer({generateQuiz, updateScore, num1, num2}) {
     const [userAnswer, setUserAnswer] = useState('');
     const [errorMessage, setErrorMessage] = useState("");
     const [result, setResult] = useState("");
-    const [wrongResult, setwrongResult] = useState("");
 
     function handleFormSubmit(event) {
         event.preventDefault()
@@ -15,7 +15,6 @@ function Answer({generateQuiz, updateScore, num1, num2}) {
             setErrorMessage('Empty value not allowed')
             }
     }
-    
 
     function checkAnswer() {
         const correctAnswer = num1 + num2
@@ -26,27 +25,19 @@ function Answer({generateQuiz, updateScore, num1, num2}) {
           } else {
             updateScore(false);
             setResult(`${userAnswer}`)
-            // setwrongResult(`Correct answer: ${correctAnswer}`)
           }
           setUserAnswer('')
-         
     }
-    
 
     return(
-        <form className="cardAnswer" onSubmit={handleFormSubmit} >
+        <form className={styles.cardAnswer} onSubmit={handleFormSubmit} >
         <h2>Substitute: {num1} + {num2}</h2>
         <label htmlFor="">Your Answer: {result} </label>
-          <input className="select" type="text" 
+          <input className={styles.select} type="text" 
                  value={userAnswer} 
                  onChange={(event) => setUserAnswer(event.target.value)} />
-       
-        <button className="btn">Submit</button>
-        {/* {wrongResult && <p>{wrongResult}</p>} */}
+        <button className={styles.btn}>Submit</button>
         {errorMessage && <p>{errorMessage}</p>}
-        
-        
-
     </form>
     )
 }

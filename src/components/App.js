@@ -3,6 +3,8 @@ import CityCard from "./cities/CityCard";
 import { useState } from "react";
 import '../index.css'
 import MathQuiz from "./quiz/MathQuiz";
+import styles from '../styles/Cities.module.css'
+
 
 
 function App() {
@@ -15,11 +17,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="formCities">
-     <CitySelector chosenCity={chosenCity}/>
-     {city? <CityCard city={city} /> : <img className="cardImage" src='https://img.freepik.com/premium-photo/world-map-with-pointer-marks-generative-ai_220873-22388.jpg'></img>}
-     </div>
-     <MathQuiz />
+       <div className={styles.formCities}>
+        <CitySelector chosenCity={chosenCity}/>
+        {city? <CityCard city={city} /> : <img className={styles.cardImage} src='https://img.freepik.com/premium-photo/world-map-with-pointer-marks-generative-ai_220873-22388.jpg'></img>}
+      </div>
+      <MathQuiz />
     </div>
   );
 }
